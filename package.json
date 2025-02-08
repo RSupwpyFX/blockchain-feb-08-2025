@@ -1,14 +1,14 @@
 {
-  "name": "template-node-ts",
+  "name": "ts-blockchain",
   "version": "0.0.0-development",
   "description": "Template project for node.js and Typescript with workflows and semantic releasing",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "[ -d post-clone-scripts ] && ./post-clone-scripts/install-semantic-release.sh && rm -rf ./post-clone-scripts || true",
+    "postinstall": "if exist post-clone-scripts ( post-clone-scripts\\install-semantic-release.bat & rmdir /s /q post-clone-scripts )",
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "tsc",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "clean": "rmdir /s /q dist && del tsconfig.tsbuildinfo",
     "build:clean": "npm run clean && npm run build",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
@@ -49,7 +49,7 @@
     "husky": "^8.0.1",
     "jest": "^29.0.1",
     "prettier": "^2.7.1",
-    "ts-jest": "^28.0.8",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.2"
